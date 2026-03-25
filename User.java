@@ -14,7 +14,13 @@ public abstract class User implements Serializable, HasMenu {
 	}
 
 	public void setPIN(String PIN) {
-		this.PIN = PIN;
+		if (PIN.matches("^\\d{4}$")){
+			this.PIN = PIN;
+		} else {
+			System.out.println("PIN must be 4 numeric digits...");
+			System.out.println("Setting PIN to 0000");
+			this.PIN = "0000";
+		}
 	}
 
 	public String getPIN(){
@@ -40,7 +46,7 @@ public abstract class User implements Serializable, HasMenu {
 			System.out.print("PIN: ");
 			String pinIn = input.nextLine();
 
-			if (pinIn.equals(this.pin)){
+			if (pinIn.equals(this.PIN)){
 				System.out.println("login successful");
 				result = true;
 			}
@@ -52,4 +58,7 @@ public abstract class User implements Serializable, HasMenu {
 			}
 			return result;
 	}
-//timestamp 16:41
+
+	public abstract String getReport();
+
+}
