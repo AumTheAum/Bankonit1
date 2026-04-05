@@ -10,7 +10,7 @@ public abstract class User implements Serializable, HasMenu {
 	}
 
 	public String getUserName(){
-		return this.userName
+		return this.userName;
 	}
 
 	public void setPIN(String PIN) {
